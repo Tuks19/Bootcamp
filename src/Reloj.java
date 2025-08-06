@@ -3,70 +3,73 @@ public class Reloj {
     private int minutos;
     private int segundos;
 
-    public Reloj(){
+    public Reloj() {
         this.horas = 12;
         this.minutos = 0;
         this.segundos = 0;
     }
 
-    public Reloj(int Horas, int Minutos, int Segundos){
-        if(Horas<24 && Minutos<60 && Segundos<60) {
+    public Reloj(int Horas, int Minutos, int Segundos) {
+        if (Horas < 24 && Minutos < 60 && Segundos < 60) {
             this.horas = Math.abs(Horas);
             this.minutos = Math.abs(Minutos);
             this.segundos = Math.abs(Segundos);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Valores Invalidos");
         }
     }
 
-    public Reloj(int Segundos){
+    public Reloj(int Segundos) {
         if (Segundos <= 86400 && Segundos >= 0) {
-            setHoras((int)(Segundos / 3600));
-            setMinutos((int)((Segundos % 3600)/60));
-            setSegundos((int)((Segundos % 3600)%60));
-        }
-        else{
+            setHoras((int) (Segundos / 3600));
+            setMinutos((int) ((Segundos % 3600) / 60));
+            setSegundos((int) ((Segundos % 3600) % 60));
+        } else {
             throw new IllegalArgumentException("Solo valores menores a 86000");
         }
     }
 
-    //Setters y Getters
-    public void setReloj(int Segundos){
+    // Setters y Getters
+    public void setReloj(int Segundos) {
         if (Segundos < 86400 && Segundos > 0) {
-            setHoras((int)(Segundos / 3600));
-            setMinutos((int)((Segundos % 3600)/60));
-            setSegundos((int)((Segundos % 3600)%60));
+            setHoras((int) (Segundos / 3600));
+            setMinutos((int) ((Segundos % 3600) / 60));
+            setSegundos((int) ((Segundos % 3600) % 60));
         }
     }
 
     public int getHoras() {
         return horas;
     }
+
     public void setHoras(int Horas) {
-        validartiempo(Horas,"horas");
+        validartiempo(Horas, "horas");
         this.horas = Horas;
     }
+
     public int getMinutos() {
         return minutos;
     }
+
     public void setMinutos(int Minutos) {
-        validartiempo(Minutos,"minutos");
+        validartiempo(Minutos, "minutos");
         this.minutos = Minutos;
     }
+
     public int getSegundos() {
         return segundos;
     }
+
     public void setSegundos(int Segundos) {
-        validartiempo(Segundos,"segundos");
+        validartiempo(Segundos, "segundos");
         this.segundos = Segundos;
     }
 
     // Metodos
 
-    public void tick(){
+    public void tick() {
         segundos++;
-        if(segundos >= 60) {
+        if (segundos >= 60) {
             setSegundos(0);
             setMinutos(getMinutos() + 1);
             if (minutos >= 60) {
@@ -79,7 +82,7 @@ public class Reloj {
         }
     }
 
-    public void addReloj(Reloj reloj){
+    public void addReloj(Reloj reloj) {
         this.horas += reloj.getHoras();
         this.minutos += reloj.getMinutos();
         this.segundos += reloj.getSegundos();
@@ -91,15 +94,15 @@ public class Reloj {
         this.horas = this.horas % 24;
     }
 
-    public void restaReloj(Reloj reloj){
-        System.out.println("La diferencia entre los relojs es de " + Math.abs(this.horas-reloj.getHoras()) + ":"
-        + Math.abs(this.minutos-reloj.getMinutos()) + ":"+Math.abs(this.segundos-reloj.getSegundos()));
+    public void restaReloj(Reloj reloj) {
+        System.out.println("La diferencia entre los relojs es de " + Math.abs(this.horas - reloj.getHoras()) + ":"
+                + Math.abs(this.minutos - reloj.getMinutos()) + ":" + Math.abs(this.segundos - reloj.getSegundos()));
     }
 
-    private void validartiempo(int valor, String tipo){
+    private void validartiempo(int valor, String tipo) {
         boolean invalido = false;
 
-        switch (tipo){
+        switch (tipo) {
             case "horas":
                 invalido = (valor < 0 || valor > 24);
                 break;
@@ -111,7 +114,7 @@ public class Reloj {
             default:
                 throw new IllegalArgumentException("Tipo de tiempo invalido");
         }
-        if(invalido){
+        if (invalido) {
             throw new IllegalArgumentException(String.format("Valor %d no valido para %s", valor, tipo));
         }
     }
@@ -121,4 +124,8 @@ public class Reloj {
         return String.format("[%02d:%02d:%02d]", horas, minutos, segundos);
     }
 
+    public static void main(String[] args) {
+        Reloj reloj = new Reloj(900000);
+        System.out.println(reloj.toString());
+    }
 }
