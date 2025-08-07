@@ -9,9 +9,8 @@ public class Maingenerala {
 
 
         while(true){
-            int [] jugada = new int[5];
+            int [] jugada = juegoNuevo.generarDados();
             intentos ++;
-            jugada = juegoNuevo.generarDados();
             juegoNuevo.mostrarDados(jugada);
             System.out.println("Desea conservar estos dados ");
             System.out.println("1. Si");
@@ -28,6 +27,7 @@ public class Maingenerala {
                 break;
             }
         }
+        input.close();
         System.out.println("Felicades has obtenido " + juegoNuevo.identificarJugada(jugadas.getFirst()));
     }
 }
