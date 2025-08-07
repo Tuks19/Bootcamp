@@ -61,7 +61,7 @@ public class Main {
                 jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
             }
         }
-
+        sc.close();
         Persona ganador = juegoNuevo.getRegistro().getLast();
         System.out.println(ganador.getNombre() + " ha ganado!");
     }

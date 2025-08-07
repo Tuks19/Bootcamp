@@ -5,7 +5,6 @@ public class FrutasyCanastos {
         boolean [] disponibilidades = new boolean [frutas.length];
         Arrays.fill(disponibilidades, true);
         int sinlugar = 0;
-
         for(int i = 0; i < frutas.length; i++){
             for(int j = 0; j < canastos.length; j++){
                 if (frutas[i] <= canastos[j] && disponibilidades[j] ) {

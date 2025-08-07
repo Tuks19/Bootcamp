@@ -58,6 +58,7 @@ public class toros_vacas {
             }
 
         }
+        sc.close();
     }
     public static void main(String[] args) {
         jugar();
