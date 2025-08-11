@@ -18,10 +18,11 @@ public class Carta {
     @Override
     public String toString() {
         String valorMostrado = switch (valor) {
+            case "1" -> "-A";
             case "11" -> "J";
             case "12" -> "Q";
             case "13" -> "K";
-            case "14" -> "A";
+            case "14" -> "+A";
             default -> valor;
         };
 
