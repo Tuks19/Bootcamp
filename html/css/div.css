@@ -1,0 +1,74 @@
+#contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;    
+    align-items: flex-start;
+    margin: 10px;
+    width: 600px;
+    height: 600px;
+    background-color: rgb(236, 230, 230);
+    border: 2px solid rgb(119, 118, 118);
+    padding: 20px;
+    position: relative ;
+    top: 25px;
+    left: 30%;
+    right: 30%;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(176, 224, 241);
+    border: 4px solid black;
+    position: relative;
+    z-index: 5;
+}
+
+.box:hover {
+    background-color: skyblue;
+    border-color: blueviolet;
+    z-index: 10;
+    
+}
+
+#box1 { 
+    margin-left: 0px; 
+    margin-top: 0px; 
+}   
+
+#box1:hover ~ #box2,
+#box1:hover ~ #box3,
+#box1:hover ~ #box4,
+#box1:hover ~ #box5 {display: none;}
+
+
+
+#box2 { 
+    margin-left: 100px; 
+    margin-top: -100px; /* Para que se toquen los bordes */
+
+}
+
+#box2:hover ~ #box3,
+#box2:hover ~ #box4,
+#box2:hover ~ #box5 {display: none;}
+
+#box3 { 
+    margin-left: 200px; 
+    margin-top: -100px; 
+}
+
+#box3:hover ~ #box4,
+#box3:hover ~ #box5 {display: none;}
+
+#box4 { 
+    margin-left: 300px; 
+    margin-top: -100px; 
+}
+
+#box4:hover ~ #box5 {display: none;}
+
+#box5 { 
+    margin-left: 400px; 
+    margin-top: -100px; 
+}
