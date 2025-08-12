@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+</head>
+<link rel="stylesheet" href="css/portafolio.css">
+<body>
+    <header>
+        <h1>Portfolio Web</h1>
+    </header>
+    <main>
+        <section class="sobre-mi">
+            <h2>Sobre mí</h2>
+            <div id="yo"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur enim et aliquid accusantium reprehenderit. Voluptatibus saepe impedit dolorem sint incidunt enim obcaecati maiores quis molestias, itaque tempore voluptate accusantium temporibus. <img src="img/descarga.png" alt="Foto de perfil"></div>
+            <ul>
+                <li>Nombre: Juan Coronel</li>
+                <li>Edad: 20 años</li>
+                <li>Profesión: Estudiante</li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h2>Educación</h2>
+            <ul>
+                <li>UNA-Licenciatura en ciencias informáticas</li>
+                <li>Bootcamp fullstack JavaScript Roshka</li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h2>Experiencia</h2>
+            <ul>
+                <li>No tengo</li>
+                <li>Bootcamp Roshka</li>
+                <li>No tengo</li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h2>Habilidades</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </section>
+        <hr>
+        <section class="contacto">
+            <h2>Contacto</h2>
+            <form action="#" method="POST" id="contacto-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Mi Portafolio. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:miemail@example.com">miemail@example.com</a></p>
+    </footer>
+</body>
+</html>
