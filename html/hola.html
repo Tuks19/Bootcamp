@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <link rel="stylesheet" href="css/hola.css">
+</head>
+<body>
+    <header>Contacto</header>
+    <form>
+        <div id="datos_personales">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="tipo_documento">Tipo Documento:</label>
+            <div class="radio-group">
+                <input type="radio" id="tipo_documento_ci" name="tipo_documento" value="Cedula de Identidad">
+                <label for="tipo_documento_ci">Cédula de Identidad</label>
+                
+                <input type="radio" id="tipo_documento_pasaporte" name="tipo_documento" value="Pasaporte">
+                <label for="tipo_documento_pasaporte">Pasaporte</label>
+            </div>
+            
+            <label for="documento">Número de Documento:</label>
+            <input type="text" id="documento" name="documento" placeholder="Ingrese su número de documento">
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +595 21 123456">
+        </div>
+        
+        <div id="datos_laborales">
+            <label for="empresa">Empresa:</label>
+            <input type="text" id="empresa" name="empresa">
+            
+            <label for="puesto">Puesto interesado:</label>
+            <input type="text" id="puesto" name="puesto">
+            
+            <label for="experiencia">Años de Experiencia:</label>
+            <input type="number" id="experiencia" name="experiencia" min="0" max="50">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpiar</button>
+        </div>
+    </form>
+</body>
+</html>
