@@ -68,6 +68,7 @@ from factura fa
 	join factura_tipo ft on fa.factura_tipo_id = ft.id
 	join factura_detalle fd on fa.id = fd.factura_id 
 	join producto p on fd.producto_id = p.id
+where fa.id = 1
 
 /*8-Montos de facturas ordenadas según totales*/
 select 
