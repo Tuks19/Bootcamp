@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="content">
+    <div id="ingresarCliente">
+        <div class="titulo-con-imagen">
+            <img src="C:\Users\HP\Desktop\Roshka Bootcamp\image.png" alt="Usuario" class="icono-usuario">
+            <h2>Ingresar Cliente</h2>
+        </div>
+        <form action="http://localhost:8082/demo1/InsertClienteServlet" method="POST">
+            <label for="nombreCliente">Nombre:</label>
+            <input type="text" id="nombreCliente" name="nombre" required>
+            <br>
+            <label for="apellidoCliente">Apellido:</label>
+            <input type="text" id="apellidoCliente" name="apellido" required>
+            <br>
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" required>
+            <br>
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+            <br>
+            <input type="submit" value="Ingresar">
+        </form>
+    </div>
+    <div id="ingresarMoneda">
+        <h2>Ingresar Moneda</h2>
+        <form action="http://localhost:8082/demo1/InsertMonedaServlet" method="POST">
+        <label for="nombreMoneda">Nombre:</label>
+            <input type="text" id="nombreMoneda" name="nombre" required>
+            <br>
+            <input type="submit" value="Ingresar">
+        </form>
+    </div>
+</div>
+</body>
+</html>

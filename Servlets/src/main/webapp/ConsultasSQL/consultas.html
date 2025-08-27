@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas SQL</title>
+
+    <style>
+        .containerConsultas {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .containerConsultas div {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="containerConsultas">
+    <div id="consulta1"> <a href="consulta1"> Top clientes con más facturas </a> </div>
+    <div id="consulta2"> <a href="consulta2">Top clientes que más gastaron </a> </div>
+    <div id="consulta3"> <a href="consulta3">Top monedas mas utilizadas </a> </div>
+    <div id="consulta4">Top proveedor de productos</div>
+    <div id="consulta5">Top productos más vendidos</div>
+    <div id="consulta6">Top productos menos vendidos</div>
+    <div id="consulta7">Consultar factura por id
+        <form action="ConsultaFacturaServlet" method="GET">
+            <input type="number" name="facturaId" placeholder="Ingrese ID de factura" min="1" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div id="consulta8">Top total de facturas</div>
+</div>
+</body>
+</html>
