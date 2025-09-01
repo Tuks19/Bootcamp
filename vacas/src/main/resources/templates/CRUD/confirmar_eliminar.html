@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Confirmar Eliminación</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Confirmar Eliminación</h1>
+
+    <div class="mensaje-advertencia">
+        <p>¿Está seguro de que desea eliminar al siguiente usuario?</p>
+    </div>
+
+    <div class="detalle-usuario">
+        <p><strong>ID:</strong> <span th:text="${usuario.idUsuario}"></span></p>
+        <p><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></p>
+        <p><strong>Apellido:</strong> <span th:text="${usuario.apellido}"></span></p>
+        <p><strong>Cédula:</strong> <span th:text="${usuario.nroCedula}"></span></p>
+        <p><strong>Correo:</strong> <span th:text="${usuario.correo}"></span></p>
+    </div>
+
+    <div class="botones-form">
+        <a th:href="@{/usuario/all}" class="boton boton-secundario">Cancelar</a>
+        <form th:action="@{'/usuario/eliminar/' + ${usuario.idUsuario}}" method="post" style="display: inline-block;">
+            <button type="submit" class="boton boton-peligro">Confirmar Eliminación</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consultar Usuarios por Equipo</title>
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Consultar Usuarios por Equipo</h1>
+
+    <form th:action="@{/equipo/consultar-usuarios}" method="post" class="formulario">
+        <div class="form-group">
+            <label for="idEquipo">Seleccionar Equipo:</label>
+            <select id="idEquipo" name="idEquipo" required>
+                <option value="">-- Seleccione un equipo --</option>
+                <option th:each="equipo : ${equipos}"
+                        th:value="${equipo.id_equipo}"
+                        th:text="${equipo.nombre}"></option>
+            </select>
+        </div>
+
+        <div class="botones-form">
+            <a th:href="@{/usuario/opciones}" class="boton boton-secundario">Volver</a>
+            <button type="submit" class="boton">Consultar</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

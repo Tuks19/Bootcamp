@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Usuarios</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Usuarios</h1>
+
+    <div class="mensaje" th:if="${mensaje}">
+        <p th:text="${mensaje}" class="mensaje-exito"></p>
+    </div>
+
+    <div class="tabla-contenedor">
+        <table class="tabla-usuarios">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Correo</th>
+                <th>Fecha Ingreso</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.idUsuario}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.apellido}"></td>
+                <td th:text="${usuario.nroCedula}"></td>
+                <td th:text="${usuario.correo}"></td>
+                <td th:text="${#temporals.format(usuario.fechaIngreso, 'dd/MM/yyyy')}"></td>
+                <td class="acciones">
+                    <a th:href="@{'/usuario/editar/' + ${usuario.idUsuario}}" class="boton boton-pequeño">Editar</a>
+                    <a th:href="@{'/usuario/eliminar/' + ${usuario.idUsuario}}" class="boton boton-pequeño boton-peligro">Eliminar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(usuarios)}">
+                <td colspan="7" style="text-align: center;">No hay usuarios registrados</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="botones">
+        <a th:href="@{/usuario/nuevo}" class="boton">Agregar Usuario</a>
+        <a th:href="@{/usuario/opciones}" class="boton boton-secundario">Volver al Menú</a>
+    </div>
+</div>
+</body>
+</html>

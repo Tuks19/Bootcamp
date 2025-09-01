@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Error</h1>
+        <div class="mensaje-error" th:text="${error}"></div>
+        <a th:href="@{/usuario/all}" class="boton">Volver a la Lista</a>
+    </div>
+</body>
+</html>

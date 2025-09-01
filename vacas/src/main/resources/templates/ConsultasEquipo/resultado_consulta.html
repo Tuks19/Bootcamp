@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resultado de Consulta</title>
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Usuarios del Equipo: <span th:text="${equipo.nombre}"></span></h1>
+
+    <div th:if="${#lists.isEmpty(usuarios)}">
+        <p class="mensaje-info">No hay usuarios en este equipo.</p>
+    </div>
+
+    <div th:unless="${#lists.isEmpty(usuarios)}" class="tabla-contenedor">
+        <table class="tabla-usuarios">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Correo</th>
+                <th>Cargo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.idUsuario}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.apellido}"></td>
+                <td th:text="${usuario.nroCedula}"></td>
+                <td th:text="${usuario.correo}"></td>
+                <td th:text="${usuario.cargo?.nombre}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/}" class="boton">Volver al Menu </a>
+    </div>
+</div>
+</body>
+</html>

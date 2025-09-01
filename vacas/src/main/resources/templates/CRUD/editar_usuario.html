@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Usuario</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Editar Usuario</h1>
+
+    <form th:action="@{'/usuario/actualizar/' + ${usuario.idUsuario}}" th:object="${usuario}" method="post" class="formulario">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" th:field="*{apellido}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" th:field="*{correo}" required>
+        </div>
+
+        <div class="botones-form">
+            <a th:href="@{/usuario/all}" class="boton boton-secundario">Cancelar</a>
+            <button type="submit" class="boton">Actualizar Usuario</button>
+        </div>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/usuario/opciones}" class="boton boton-secundario">Volver al Menú</a>
+    </div>
+</div>
+</body>
+</html>

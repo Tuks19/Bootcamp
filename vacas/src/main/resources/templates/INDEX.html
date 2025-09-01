@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gestión de Usuarios</h1>
+    <p>Seleccione una opción:</p>
+
+    <div class="menu-opciones">
+        <a th:href="@{/usuario/all}" class="boton">Ver todos los usuarios</a>
+        <a th:href="@{/usuario/nuevo}" class="boton">Agregar nuevo usuario</a>
+        <a th:href="@{/equipo/consultar_usuarios}" class="boton">Consultar usuarios</a>
+    </div>
+
+    <div class="mensaje" th:if="${mensaje}">
+        <p th:text="${mensaje}" class="mensaje-exito"></p>
+    </div>
+</div>
+</body>
+</html>

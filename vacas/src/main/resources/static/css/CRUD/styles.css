@@ -1,0 +1,395 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    margin: 40px auto;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+}
+
+p {
+    color: #7f8c8d;
+    margin-bottom: 25px;
+    font-size: 1.1em;
+}
+
+/* Menú de opciones */
+.menu-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Botones */
+.boton {
+    display: block;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #3498db;
+    color: #fff;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.boton:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.boton:active {
+    transform: translateY(0);
+}
+
+.boton-secundario {
+    background: #95a5a6;
+}
+
+.boton-secundario:hover {
+    background: #7f8c8d;
+}
+
+.boton-peligro {
+    background: #e74c3c;
+}
+
+.boton-peligro:hover {
+    background: #c0392b;
+}
+
+/* Botones pequeños */
+.boton-pequeño {
+    display: inline-block;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #3498db;
+    color: #fff;
+    font-size: 0.9em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2px;
+}
+
+.boton-pequeño:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.boton-pequeño.boton-peligro {
+    background: #e74c3c;
+}
+
+.boton-pequeño.boton-peligro:hover {
+    background: #c0392b;
+}
+
+/* Mensajes */
+.mensaje {
+    margin-top: 20px;
+}
+
+.mensaje-exito {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 20px;
+}
+
+.mensaje-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+}
+
+.mensaje-advertencia {
+    background: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ffeeba;
+}
+
+/* Estilos para formularios */
+.formulario {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.botones-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Estilos para tablas */
+.tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.tabla-usuarios th {
+    background: #2c3e50;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tabla-usuarios td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #2c3e50;
+}
+
+.tabla-usuarios tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.tabla-usuarios tr:hover {
+    background: #e8f4fc;
+}
+
+.tabla-usuarios th:nth-child(1),
+.tabla-usuarios td:nth-child(1) {
+    width: 5%;
+}
+
+.tabla-usuarios th:nth-child(2),
+.tabla-usuarios td:nth-child(2),
+.tabla-usuarios th:nth-child(3),
+.tabla-usuarios td:nth-child(3) {
+    width: 12%;
+}
+
+.tabla-usuarios th:nth-child(4),
+.tabla-usuarios td:nth-child(4) {
+    width: 12%;
+}
+
+.tabla-usuarios th:nth-child(5),
+.tabla-usuarios td:nth-child(5) {
+    width: 20%;
+}
+
+.tabla-usuarios th:nth-child(6),
+.tabla-usuarios td:nth-child(6) {
+    width: 15%;
+}
+
+.tabla-usuarios th:nth-child(7),
+.tabla-usuarios td:nth-child(7) {
+    width: 20%;
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Detalles de usuario */
+.detalle-usuario {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.detalle-usuario p {
+    margin: 8px 0;
+    color: #2c3e50;
+}
+
+.detalle-usuario strong {
+    color: #2c3e50;
+}
+
+/* Grupos de botones */
+.botones {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .tabla-contenedor {
+        overflow-x: auto;
+    }
+
+    .tabla-usuarios {
+        min-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .botones-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+/* Estilos para formularios mejorados */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-text {
+    display: block;
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.info-text {
+    display: block;
+    font-size: 0.9em;
+    color: #3498db;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.form-check-label {
+    margin: 0;
+    color: #2c3e50;
+}
+
+/* Estilos para campos requeridos */
+label[required]::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+/* Responsive para formularios */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

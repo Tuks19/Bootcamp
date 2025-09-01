@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crear Nuevo Usuario</title>
+    <!-- Usando Thymeleaf para asegurar la carga del CSS -->
+    <link rel="stylesheet" th:href="@{/css/CRUD/styles.css}">
+    <!-- Fallback por si Thymeleaf no funciona -->
+    <link rel="stylesheet" href="/css/CRUD/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Crear Nuevo Usuario</h1>
+
+    <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" class="formulario" id="usuarioForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="nombre">Nombre: *</label>
+                <input type="text" id="nombre" th:field="*{nombre}" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido: *</label>
+                <input type="text" id="apellido" th:field="*{apellido}" required maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="nroCedula">Cédula: *</label>
+                <input type="number" id="nroCedula" th:field="*{nroCedula}" required min="100000" max="999999999">
+                <small class="form-text">Solo números, sin puntos ni guiones</small>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo electrónico: *</label>
+                <input type="email" id="correo" th:field="*{correo}" required maxlength="255">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" th:field="*{telefono}" maxlength="255" placeholder="+XX XXX XXX XXX">
+            </div>
+
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+                <span id="edadDisplay" class="info-text"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fechaIngreso">Fecha de Ingreso: *</label>
+                <input type="date" id="fechaIngreso" th:field="*{fechaIngreso}" required>
+                <span id="antiguedadDisplay" class="info-text"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="diasVacaciones">Días de Vacaciones:</label>
+                <input type="number" id="diasVacaciones" th:field="*{diasVacaciones}" min="0" max="365" value="0">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="rol">Rol: *</label>
+                <select id="rol" th:field="*{rol}" required>
+                    <option value="">Seleccione un rol</option>
+                    <option th:each="rolItem : ${roles}"
+                            th:value="${rolItem.id_rol}"
+                            th:text="${rolItem.nombre}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <select id="cargo" th:field="*{cargo}">
+                    <option value="">Seleccione un cargo</option>
+                    <option th:each="cargoItem : ${cargos}"
+                            th:value="${cargoItem.id_cargo}"
+                            th:text="${cargoItem.nombre}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="equipo">Equipo:</label>
+                <select id="equipo" th:field="*{equipo}">
+                    <option value="">Seleccione un equipo</option>
+                    <option th:each="equipoItem : ${equipos}"
+                            th:value="${equipoItem.id_equipo}"
+                            th:text="${equipoItem.nombre}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contrasena">Contraseña: *</label>
+                <input type="password" id="contrasena" th:field="*{contrasena}" required minlength="6" maxlength="100">
+                <small class="form-text">Mínimo 6 caracteres</small>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" id="requiereCambioContrasena" th:field="*{requiereCambioContrasena}" class="form-check-input">
+            <label for="requiereCambioContrasena" class="form-check-label">Requerir cambio de contraseña al primer inicio</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" id="estado" th:field="*{estado}" class="form-check-input" checked>
+            <label for="estado" class="form-check-label">Usuario activo</label>
+        </div>
+
+        <div class="botones-form">
+            <a th:href="@{/usuario/all}" class="boton boton-secundario">Cancelar</a>
+            <button type="submit" class="boton">Guardar Usuario</button>
+        </div>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/usuario/opciones}" class="boton boton-secundario">Volver al Menú</a>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Calcular edad automáticamente
+        $('#fechaNacimiento').change(function() {
+            calcularEdad();
+        });
+
+        // Calcular antigüedad automáticamente
+        $('#fechaIngreso').change(function() {
+            calcularAntiguedad();
+        });
+
+        // Validar formulario antes de enviar
+        $('#usuarioForm').submit(function(e) {
+            if (!validarFormulario()) {
+                e.preventDefault();
+            }
+        });
+
+        function calcularEdad() {
+            const fechaNacimiento = new Date($('#fechaNacimiento').val());
+            if (!isNaN(fechaNacimiento.getTime())) {
+                const hoy = new Date();
+                let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+                const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+
+                if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                    edad--;
+                }
+
+                $('#edadDisplay').text('Edad: ' + edad + ' años');
+            } else {
+                $('#edadDisplay').text('');
+            }
+        }
+
+        function calcularAntiguedad() {
+            const fechaIngreso = new Date($('#fechaIngreso').val());
+            if (!isNaN(fechaIngreso.getTime())) {
+                const hoy = new Date();
+                let antiguedad = hoy.getFullYear() - fechaIngreso.getFullYear();
+                const mes = hoy.getMonth() - fechaIngreso.getMonth();
+
+                if (mes < 0 || (mes === 0 && hoy.getDate() < fechaIngreso.getDate())) {
+                    antiguedad--;
+                }
+
+                $('#antiguedadDisplay').text('Antigüedad: ' + antiguedad + ' años');
+            } else {
+                $('#antiguedadDisplay').text('');
+            }
+        }
+
+        function validarFormulario() {
+            // Validar que la fecha de ingreso no sea futura
+            const fechaIngreso = new Date($('#fechaIngreso').val());
+            const hoy = new Date();
+
+            if (fechaIngreso > hoy) {
+                alert('La fecha de ingreso no puede ser futura');
+                return false;
+            }
+
+            // Validar que la fecha de nacimiento sea anterior a la fecha de ingreso
+            const fechaNacimiento = new Date($('#fechaNacimiento').val());
+            if (fechaNacimiento && fechaNacimiento >= fechaIngreso) {
+                alert('La fecha de nacimiento debe ser anterior a la fecha de ingreso');
+                return false;
+            }
+
+            return true;
+        }
+    });
+</script>
+</body>
+</html>
